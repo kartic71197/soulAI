@@ -43,20 +43,16 @@ const Home = () => {
     if (currentConvo.length === 0) return;
 
     const savedChats = JSON.parse(localStorage.getItem("chats") || "[]");
-    console.log("savedChats", savedChats);
     const newChat = {
       id: Date.now(),
       conversation: currentConvo,
       review: chatReview,
     };
-    console.log("newChat", newChat);
     localStorage.setItem("chats", JSON.stringify([...savedChats, newChat]));
-
     setChatReview("");
     setCurrentConvo([]);
     setShowReviewModal(false);
   };
-
   const handleSaveChat = () => {
     setShowReviewModal(true);
   };
@@ -85,7 +81,7 @@ const Home = () => {
         ASK
       </button>
       <button
-        type='button'
+        // type='button'
         onClick={handleSaveChat}
         className="bg-indigo-300 py-3 px-6 rounded"
       >
@@ -167,7 +163,7 @@ const Home = () => {
                 Cancel
               </button>
               <button
-                type="button"
+                type='button'
                 onClick={saveChatToLocalStorage}
                 className="bg-indigo-500 text-white px-4 py-2 rounded"
               >
