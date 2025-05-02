@@ -62,7 +62,13 @@ const Home = () => {
   };
 
   const renderInputSection = () => (
-    <div className="row-span-1 flex justify-center items-center gap-3">
+    <form
+      onSubmit={(e) => {
+        e.preventDefault(); // Prevents page reload
+        askQuestion();
+      }}
+      className="row-span-1 flex justify-center items-center gap-3"
+    >
       <div className="flex-1">
         <input
           value={currentQuestion}
@@ -75,7 +81,6 @@ const Home = () => {
       <button
         type="submit"
         className="bg-indigo-300 py-3 px-6 rounded"
-        onClick={askQuestion}
       >
         ASK
       </button>
@@ -86,8 +91,9 @@ const Home = () => {
       >
         SAVE
       </button>
-    </div>
+    </form>
   );
+  
 
   return (
     <div className="grid grid-cols-6 w-full h-screen overflow-hidden">
