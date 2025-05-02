@@ -100,7 +100,7 @@ const Home = () => {
             <div className="row-span-5 overflow-y-auto">
               {currentConvo.map((item, idx) => (
                 <div key={idx} className="mb-2 bg-white p-3 rounded shadow">
-                  <strong>{item.from === "user" ? "You:" : "Soul AI:"}</strong>{" "}
+                  <span>{item.from === "user" ? "You" : "Soul AI"}</span>{" "}
                   <p>{item.text}</p>
                 </div>
               ))}
