@@ -66,8 +66,8 @@ setSavedChats(Array.isArray(parsedChats) ? parsedChats : []);
         ) : (
           <div className="space-y-6">
             {savedChats.map((chat, idx) => (
-              <div key={chat.id} className="bg-white p-4 rounded shadow">
-                <div className="space-y-1 mb-2 max-h-48 border border-gray-200 p-2 rounded">
+              <div key={chat.id} >
+                <div className="space-y-1 mb-2 border border-gray-200 p-2 rounded">
                   {chat.conversation &&
                     chat.conversation.map((msg, i) => (
                       <div
