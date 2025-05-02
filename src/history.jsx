@@ -18,12 +18,12 @@ const History = () => {
       // Get raw data from localStorage
       const rawData = localStorage.getItem("chats");
       console.log("Raw localStorage data:", rawData);
-      
+
       if (rawData) {
         // Parse the JSON data
         const parsedChats = JSON.parse(rawData);
         console.log("Successfully parsed chats:", parsedChats);
-        
+
         // Directly set the state with the parsed data
         setSavedChats(parsedChats);
       } else {
@@ -50,24 +50,29 @@ const History = () => {
     <div className="grid grid-cols-6 w-full h-screen overflow-hidden">
       <Sidebar />
       <div className="col-span-5 p-3 bg-indigo-100 overflow-y-auto">
-        <h1 className="text-indigo-400 text-2xl font-bold">Bot AI</h1>
-        
+        <header>
+          <h1 className="text-indigo-400 text-2xl font-bold">Bot AI</h1>
+        </header>
+
         <div className="flex justify-between items-center mb-4">
           <h1 className="text-2xl font-bold text-indigo-600">Chat History</h1>
-          <button 
+          <button
             onClick={handleRefresh}
             className="px-3 py-1 bg-indigo-500 text-white rounded hover:bg-indigo-600"
           >
             Refresh
           </button>
         </div>
-        
+
         {/* Debug info */}
         <div className="mb-4 p-2 bg-gray-100 rounded text-xs">
-          <p>Storage data available: {localStorage.getItem("chats") ? "Yes" : "No"}</p>
+          <p>
+            Storage data available:{" "}
+            {localStorage.getItem("chats") ? "Yes" : "No"}
+          </p>
           <p>Chats in state: {savedChats.length}</p>
         </div>
-        
+
         {loading ? (
           <div className="flex justify-center p-4">
             <p>Loading chats...</p>
@@ -84,18 +89,25 @@ const History = () => {
                   Chat #{idx + 1} - ID: {chat.id}
                 </h2>
                 <div className="space-y-1 mb-2 max-h-48 overflow-y-auto border border-gray-200 p-2 rounded">
-                  {chat.conversation && chat.conversation.map((msg, i) => (
-                    <div key={i} className={`text-sm p-1 ${msg.from === "user" ? "bg-gray-50" : "bg-indigo-50"} rounded`}>
-                      <strong>
-                        {msg.from === "user" ? "You:" : "Soul AI:"}
-                      </strong>{" "}
-                      <div>
-                      {msg.text}
+                  {chat.conversation &&
+                    chat.conversation.map((msg, i) => (
+                      <div
+                        key={i}
+                        className={`text-sm p-1 ${
+                          msg.from === "user" ? "bg-gray-50" : "bg-indigo-50"
+                        } rounded`}
+                      >
+                        <strong>
+                          {msg.from === "user" ? "You:" : "Soul AI:"}
+                        </strong>{" "}
+                        <div>{msg.text}</div>
+                        {msg.time && (
+                          <span className="text-xs text-gray-500 ml-2">
+                            {msg.time}
+                          </span>
+                        )}
                       </div>
-
-                      {msg.time && <span className="text-xs text-gray-500 ml-2">{msg.time}</span>}
-                    </div>
-                  ))}
+                    ))}
                 </div>
                 {chat.review && (
                   <p className="italic text-gray-600 bg-gray-50 p-2 rounded">

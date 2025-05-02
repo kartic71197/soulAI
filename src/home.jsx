@@ -43,19 +43,18 @@ const Home = () => {
     if (currentConvo.length === 0) return;
 
     const savedChats = JSON.parse(localStorage.getItem("chats") || "[]");
-    console.log('savedChats', savedChats);
+    console.log("savedChats", savedChats);
     const newChat = {
       id: Date.now(),
       conversation: currentConvo,
       review: chatReview,
     };
-    console.log('newChat', newChat);
+    console.log("newChat", newChat);
     localStorage.setItem("chats", JSON.stringify([...savedChats, newChat]));
 
     setChatReview("");
     setCurrentConvo([]);
     setShowReviewModal(false);
-
   };
 
   const handleSaveChat = () => {
@@ -94,7 +93,9 @@ const Home = () => {
     <div className="grid grid-cols-6 w-full h-screen overflow-hidden">
       <Sidebar />
       <div className="col-span-5 p-3 bg-indigo-100">
-        <h1 className="text-indigo-400 text-2xl font-bold">Bot AI</h1>
+        <header>
+          <h1 className="text-indigo-400 text-2xl font-bold">Bot AI</h1>
+        </header>
         <div className="grid grid-rows-6 h-full">
           {currentConvo.length > 0 ? (
             <div className="row-span-5 overflow-y-auto">
