@@ -82,7 +82,7 @@ setSavedChats(Array.isArray(parsedChats) ? parsedChats : []);
                         <strong>
                           {msg.from === "user" ? "You:" : "Soul AI:"}
                         </strong>{" "}
-                        <div>{msg.text}</div>
+                        <div class="bg-white p-6 rounded test-center">{msg.text}</div>
                         {msg.time && (
                           <span className="text-xs text-gray-500 ml-2">
                             {msg.time}
