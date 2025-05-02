@@ -54,25 +54,6 @@ const History = () => {
           <h1 className="text-indigo-400 text-2xl font-bold">Bot AI</h1>
         </header>
 
-        <div className="flex justify-between items-center mb-4">
-          <h1 className="text-2xl font-bold text-indigo-600">Chat History</h1>
-          <button
-            onClick={handleRefresh}
-            className="px-3 py-1 bg-indigo-500 text-white rounded hover:bg-indigo-600"
-          >
-            Refresh
-          </button>
-        </div>
-
-        {/* Debug info */}
-        <div className="mb-4 p-2 bg-gray-100 rounded text-xs">
-          <p>
-            Storage data available:{" "}
-            {localStorage.getItem("chats") ? "Yes" : "No"}
-          </p>
-          <p>Chats in state: {savedChats.length}</p>
-        </div>
-
         {loading ? (
           <div className="flex justify-center p-4">
             <p>Loading chats...</p>
