@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Sidebar from "./sidebar";
+import { useLayoutEffect } from "react";
 
 const History = () => {
   // Use an empty array as initial state
@@ -7,7 +8,7 @@ const History = () => {
   const [loading, setLoading] = useState(true);
 
   // Load data on component mount
-  useEffect(() => {
+  useLayoutEffect(() => {
     loadChatsFromStorage();
   }, []);
 
@@ -22,7 +23,7 @@ const History = () => {
       if (rawData) {
         // Parse the JSON data
         const parsedChats = JSON.parse(rawData);
-        console.log("Successfully parsed chats:", parsedChats);
+setSavedChats(Array.isArray(parsedChats) ? parsedChats : []);
 
         // Directly set the state with the parsed data
         setSavedChats(parsedChats);
