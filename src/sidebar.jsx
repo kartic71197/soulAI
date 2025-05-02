@@ -20,7 +20,7 @@ const Sidebar = () => {
       <div className="p-3">
         <Link to="/history">
           <div className="p-2 font-semibold flex justify-around items-center gap-3 bg-indigo-300 rounded-lg">
-            Past conversations
+          Past Conversations
           </div>
         </Link>
       </div>

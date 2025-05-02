@@ -28,7 +28,7 @@ const Home = () => {
       },
       {
         from: "bot",
-        text: match ? match.response : "Sorry, did not understand your query!",
+        text: match ? match.response : "Sorry, Did not understand your query!",
         time: new Date().toLocaleTimeString([], {
           hour: "2-digit",
           minute: "2-digit",
@@ -51,7 +51,7 @@ const Home = () => {
     };
     console.log('newChat', newChat);
     localStorage.setItem("chats", JSON.stringify([...savedChats, newChat]));
-    
+
     setChatReview("");
     setCurrentConvo([]);
     setShowReviewModal(false);
@@ -70,7 +70,7 @@ const Home = () => {
           onChange={(e) => setCurrentQuestion(e.target.value)}
           className="bg-white w-full p-3 border border-indigo-300 rounded"
           type="text"
-          placeholder="Message Bot AI…"
+          placeholder="Message Bot AI..."
         />
       </div>
       <button
@@ -101,7 +101,7 @@ const Home = () => {
               {currentConvo.map((item, idx) => (
                 <div key={idx} className="mb-2 bg-white p-3 rounded shadow">
                   <strong>{item.from === "user" ? "You:" : "Soul AI:"}</strong>{" "}
-                  {item.text}
+                  <p>{item.text}</p>
                 </div>
               ))}
             </div>

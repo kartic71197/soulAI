@@ -89,7 +89,10 @@ const History = () => {
                       <strong>
                         {msg.from === "user" ? "You:" : "Soul AI:"}
                       </strong>{" "}
+                      <div>
                       {msg.text}
+                      </div>
+
                       {msg.time && <span className="text-xs text-gray-500 ml-2">{msg.time}</span>}
                     </div>
                   ))}
